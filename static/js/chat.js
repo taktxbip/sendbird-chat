@@ -206,51 +206,6 @@ function createChannelList(channels) {
   return channelListHtml;
 }
 
-function joinChannel(channelUrl) {
-  if (channelUrl == currChannelUrl) {
-    navInit();
-    popupInit();
-    return false;
-  }
-
-  PreviousMessageListQuery = null;
-  sb.OpenChannel.getChannel(channelUrl, function (channel, error) {
-    if (error) {
-      return;
-    }
-
-    channel.enter(function (response, error) {
-      if (error) {
-        if (error.code == 900100) {
-          alert('Oops...You got banned out from this channel.');
-        }
-        return;
-      }
-
-      $('.chat-top__button-hide').hide();
-
-      currChannelInfo = channel;
-      currChannelUrl = channelUrl;
-
-      $('.chat-empty').hide();
-      initChatTitle(xssEscape(currChannelInfo.name), 0);
-
-      $('.chat-canvas').html('');
-      $('.chat-input-text__field').val('');
-      $('.chat').show();
-
-      navInit();
-      popupInit();
-
-      isOpenChat = true;
-      loadMoreChatMessage(scrollPositionBottom);
-      setWelcomeMessage(xssEscape(currChannelInfo.name));
-      addChannel();
-      $('.chat-input-text__field').attr('disabled', false);
-
-    });
-  });
-}
 
 function addChannel() {
   if ($('.left-nav-channel-open').length == 0) {
@@ -405,28 +360,18 @@ $('.modal-hide-channel-submit').click(function () {
  *                MESSAGING
  **********************************************/
 $('#btn_messaging_chat').click(function () {
-  popupInit();
-  $('.modal-guide-create').hide();
-  $('.left-nav-button-guide').hide();
-  $('.modal-open-chat').hide();
-  $('#btn_open_chat').removeClass('left-nav-open--active');
 
-  if ($(this).hasClass('left-nav-messaging--active')) {
-    $('.right-section__modal-bg').hide();
-    $(this).removeClass('left-nav-messaging--active');
-    $('.modal-messaging').hide();
-  } else {
-    $('.right-section__modal-bg').show();
-    $(this).addClass('left-nav-messaging--active');
     userListToken = '';
     userListNext = 0;
-    $('.modal-messaging-list').html('');
-    getUserList(true);
-    $('.modal-messaging').show();
-  }
+		getUserList(true);
+
+
 });
 
 function getUserList(isFirstPage) {
+	
+
+
   if (isFirstPage) {
     $('.modal-messaging-list').html('');
     UserListQuery = sb.createUserListQuery();
@@ -434,6 +379,9 @@ function getUserList(isFirstPage) {
 
   if (UserListQuery.hasNext) {
     UserListQuery.next(function (userList, error) {
+
+			console.log(userList);
+			
       if (error) {
         return;
       }
@@ -813,7 +761,7 @@ function groupChannelListMembersAndProfileImageUpdate(targetChannel) {
   var targetElem = $('.left-nav-channel-group[data-channel-url=' + targetChannel.url + ']');
   // $('.left-nav-channel-group[data-channel-url='+targetChannel.url+']')
 
-  targetElem.css('background-image', 'url(' + selectedProfileImageUrl + ')');
+  // targetElem.css('background-image', 'url(' + selectedProfileImageUrl + ')');
 
   // member nickname update
   targetElem.find('.left-nav-channel-members').html(membersNickname);
@@ -885,7 +833,7 @@ function joinGroupChannel(channelUrl, callback) {
 
     isOpenChat = false;
     loadMoreChatMessage(scrollPositionBottom);
-    setWelcomeMessage('Group Channel');
+    setWelcomeMessage('MyIrishDate Chat');
     addGroupChannel(isGroup, channelMemberList, currChannelInfo);
     $('.chat-input-text__field').attr('disabled', false);
 
@@ -1720,14 +1668,23 @@ function init() {
   userId = checkUserId(userId);
   nickname = decodeURI(decodeURIComponent(getUrlVars()['nickname']));
 
-  $('.init-check').show();
+
   startSendBird(userId, nickname);
   $('.left-nav-user-nickname').html(xssEscape(nickname));
 }
 
 $(document).ready(function () {
   notifyMe();
-  init();
+	init();
+
+	
+	userListToken = '';
+	userListNext = 0;
+	setTimeout(() => {
+		getUserList(true);
+	}, 2000);
+	
+
 });
 
 window.onfocus = function () {

@@ -1,13 +1,14 @@
-
 .chat-container {
-	width: 100vw;
-	height: 100vh;
-	padding: 20px;
-	overflow: hidden;
-	background-color: #F5F8F4;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: #f5f8f4;
+  overflow: hidden;
 }
 
-input, button, textarea {
+input,
+button,
+textarea {
   outline: none;
 }
 
@@ -44,17 +45,23 @@ input, button, textarea {
 }
 
 .sample-body {
-	border-radius: 20px;
+  border-radius: 20px;
   min-width: 960px;
   overflow-x: auto;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  position: absolute;
 }
 
 .left-nav {
-  width: 220px;
-  height: 100vh;
-  background: #4e4273;
-  padding: 20px 0 0 0;
-  border-right: 1px solid #3b1973;
+  width: 400px;
+  height: calc(100% - 80px);
+  background: #fff;
+  padding: 20px;
+  position: relative;
+  border-right: 1px solid #d9d8ff;
   float: left;
 }
 
@@ -75,7 +82,8 @@ input, button, textarea {
 .left-nav-button-guide {
   width: 36px;
   height: 36px;
-  background: url("../img/image-outerglow.svg") no-repeat center center transparent;
+  background: url("../img/image-outerglow.svg") no-repeat center center
+    transparent;
   float: right;
   margin-right: 7px;
 }
@@ -87,7 +95,7 @@ input, button, textarea {
   -moz-border-radius: 2px;
   border-radius: 2px;
   padding: 0 0 0 14px;
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-weight: 400;
   font-size: 13px;
   color: #fff;
@@ -97,34 +105,40 @@ input, button, textarea {
 }
 
 .left-nav-open {
-  background: url("../img/btn-openchat-normal.svg") no-repeat 160px center #329fe6;
+  background: url("../img/btn-openchat-normal.svg") no-repeat 160px center
+    #329fe6;
 }
 .left-nav-open:hover,
 .left-nav-open:focus {
-  background: url("../img/btn-openchat-normal.svg") no-repeat 160px center #0e6bc4;
+  background: url("../img/btn-openchat-normal.svg") no-repeat 160px center
+    #0e6bc4;
 }
 
 .left-nav-open--active,
 .left-nav-open--active:hover,
 .left-nav-open--active:focus {
   width: 212px;
-  background: url("../img/btn-openchat-close.svg") no-repeat 160px center #0e6bc4;
+  background: url("../img/btn-openchat-close.svg") no-repeat 160px center
+    #0e6bc4;
 }
 
 .left-nav-messaging {
   margin-top: 12px;
-  background: url("../img/btn-1on1groupchat-normal.svg") no-repeat 160px center #32c5e6;
+  background: url("../img/btn-1on1groupchat-normal.svg") no-repeat 160px center
+    #32c5e6;
 }
 .left-nav-messaging:hover,
 .left-nav-messaging:focus {
-  background: url("../img/btn-1on1groupchat-normal.svg") no-repeat 160px center #0f9ab8;
+  background: url("../img/btn-1on1groupchat-normal.svg") no-repeat 160px center
+    #0f9ab8;
 }
 
 .left-nav-messaging--active,
 .left-nav-messaging--active:hover,
 .left-nav-messaging--active:focus {
   width: 212px;
-  background: url("../img/btn-openchat-close.svg") no-repeat 160px center #0f9ab8;
+  background: url("../img/btn-openchat-close.svg") no-repeat 160px center
+    #0f9ab8;
 }
 
 .left-nav-channel-section {
@@ -142,7 +156,7 @@ input, button, textarea {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 500;
   font-size: 14px;
   color: #7f6da0;
@@ -153,7 +167,7 @@ input, button, textarea {
 .left-nav-channel-title {
   width: 100%;
   height: 30px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 500;
   font-size: 11px;
   color: #7f6da0;
@@ -164,41 +178,32 @@ input, button, textarea {
   margin-top: 18px;
 }
 
-.left-nav-channel {
-  width: 100%;
-  font-family: 'Lato';
-  font-weight: 500;
-  font-size: 16px;
-  color: #a08dce;
-  padding: 0 0 0 44px;
-  cursor: pointer;
-}
-
 .left-nav-channel-lastmessage {
   font-size: 13px;
   color: #7f6da0;
 }
 .left-nav-channel-lastmessagetime {
-  font-size: 13px;
-  color: #7f6da0;
-  text-align: left;
-  padding-right: 20px;
+  display: none;
 }
 
 .left-nav-channel-open {
-  background: url("../img/icon-menu-channel-off.svg") no-repeat 14px center transparent;
+  background: url("../img/icon-menu-channel-off.svg") no-repeat 14px center
+    transparent;
   margin-bottom: 4px;
 }
 .left-nav-channel-open:hover {
-  background: url("../img/icon-menu-channel-off.svg") no-repeat 14px center #463c66;
+  background: url("../img/icon-menu-channel-off.svg") no-repeat 14px center
+    #463c66;
 }
 
 .left-nav-channel-open--active {
-  background: url("../img/icon-menu-channel-on.svg") no-repeat 14px center #362f4f;
+  background: url("../img/icon-menu-channel-on.svg") no-repeat 14px center
+    #362f4f;
   color: #fff;
 }
 .left-nav-channel-open--active:hover {
-  background: url("../img/icon-menu-channel-on.svg") no-repeat 14px center #3f2f5b;
+  background: url("../img/icon-menu-channel-on.svg") no-repeat 14px center
+    #3f2f5b;
   color: #fff;
 }
 
@@ -213,15 +218,18 @@ input, button, textarea {
   height: 30px;
   float: right;
   margin-right: 20px;
-  background: url("../img/btn-leave-menu-over.svg") no-repeat center center transparent;
+  background: url("../img/btn-leave-menu-over.svg") no-repeat center center
+    transparent;
 }
 .left-nav-channel-leave--active {
   display: block;
-  background: url("../img/btn-leave-menu-click.svg") no-repeat center center transparent;
+  background: url("../img/btn-leave-menu-click.svg") no-repeat center center
+    transparent;
 }
 
 .left-nav-channel-messaging {
-  background: url("../img/icon-menu-chat-off.svg") no-repeat 14px center transparent;
+  background: url("../img/icon-menu-chat-off.svg") no-repeat 14px center
+    transparent;
 }
 .left-nav-channel-messaging:hover {
   background: url("../img/icon-menu-chat-off.svg") no-repeat 14px center #463c66;
@@ -232,30 +240,48 @@ input, button, textarea {
   color: #fff;
 }
 
+.left-nav-channel-members {
+  margin-top: 10px;
+  font: normal bold 16px / 21px "Lato";
+  color: #1a2d6a;
+}
+
+#messaging_channel_list .left-nav-channel-group:first-child {
+  border-top: none;
+}
+
 .left-nav-channel-group {
+  min-height: 100px;
+  padding: 20px;
+  border-radius: 10px;
   background-repeat: no-repeat;
-  background-size: 24px;
-  background-position: left top;
-  background-color: transparent;
+  background-position: left center;
   background-image: url("../img/icon-menu-group-off.svg");
-  background-position-x: 10px;
+  background-position-x: 0;
   background-position-y: 5px;
-  margin-bottom: 14px;
-  min-height: 35px;
+  border-top: 1px solid #ecebff;
+  transition: 0.2s ease-in-out;
 }
 .left-nav-channel-group:hover {
+  cursor: pointer;
   background-repeat: no-repeat;
-  background-size: 24px;
-  background-color: #463c66;
+  border-radius: 10px;
+  background-color: #f5f6ff;
+  border-top: 1px solid #f5f6ff;
   background-position-x: 10px;
 }
 
+.left-nav-channel-group:hover + .left-nav-channel-group {
+  border-top: 1px solid #fff;
+}
+
 .left-nav-channel-group--active {
-  background-repeat: no-repeat;
-  background-size: 24px;
-  background-color: #362f4f;
-  background-position-x: 10px;
-  color: #fff;
+  background-color: #f5f6ff;
+  border-color: #f5f6ff;
+}
+
+.left-nav-channel-group--active + .left-nav-channel-group {
+  border-color: #fff;
 }
 
 .left-nav-channel__unread {
@@ -265,7 +291,7 @@ input, button, textarea {
   -moz-border-radius: 6px;
   border-radius: 6px;
   background: #f5429c;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 11px;
   color: #fff;
@@ -276,12 +302,12 @@ input, button, textarea {
 }
 
 .left-nav-user {
-  width: 220px;
+  width: 100%;
   height: 72px;
   position: absolute;
   bottom: 0;
   background: #463c66;
-  font-family: 'Lato';
+  font-family: "Lato";
 }
 
 .left-nav-user-icon {
@@ -318,11 +344,11 @@ input, button, textarea {
   margin-left: 12px;
 }
 
-
 .right-section {
-  width: calc(100% - 220px);
-  height: 100vh;
+  width: calc(100% - 400px);
+  height: calc(100% - 80px);
   float: left;
+  position: relative;
 }
 
 .right-section__modal-bg {
@@ -336,26 +362,35 @@ input, button, textarea {
 
 .chat-top {
   width: 100%;
-  height: 72px;
+  height: 80px;
   background: #fff;
-  border-bottom: 1px solid rgba(171, 184, 196, 0.5);
-  padding: 21px 20px 0 20px;
+  z-index: 1;
+  position: relative;
+  box-shadow: 0px 10px 30px rgba(217, 216, 255, 0.4);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.chat-top h1 {
+  display: inline-block;
+  width: 400px;
+  padding-left: 40px;
+  border-right: 1px solid #d9d8ff;
+  margin: 0;
+  line-height: 80px;
+  height: 100%;
+  font: normal bold 18px / 80px "Lato";
+  color: #1a2d6a;
 }
 
 .chat-top__title {
   display: none;
-  padding-left: 20px;
-  background: url("../img/icon-openchat-title.svg") no-repeat left center;
-  font-family: 'Lato';
-  font-weight: 500;
-  font-size: 18px;
-  color: #4f398f;
-  line-height: 30px;
-  float: left;
+  padding-left: 40px;
+  font: normal bold 18px / 80px "Lato";
+  color: #1a2d6a;
 }
-.chat-top__title--messaging {
-  background: url("../img/icon-1on1chat-title.svg") no-repeat left center;
-}
+
 .chat-top__title--group {
   background: url("../img/icon-groupchat-title.svg") no-repeat left center;
 }
@@ -378,7 +413,6 @@ input, button, textarea {
   float: left;
 }
 .chat-top__button:hover {
-
 }
 
 .chat-top__button-hide {
@@ -413,7 +447,8 @@ input, button, textarea {
 }
 
 .chat-top__button-member {
-  background: url("../img/btn-memberlist-normal.svg") no-repeat center center #f7f8fc;
+  background: url("../img/btn-memberlist-normal.svg") no-repeat center center
+    #f7f8fc;
 }
 .chat-top__button-member__right {
   -webkit-border-top-right-radius: 0;
@@ -430,10 +465,12 @@ input, button, textarea {
   border-left: 0;
 }
 .chat-top__button-member:hover {
-  background: url("../img/btn-memberlist-over.svg") no-repeat center center #f7f8fc;
+  background: url("../img/btn-memberlist-over.svg") no-repeat center center
+    #f7f8fc;
 }
 .chat-top__button-member--active {
-  background: url("../img/btn-memberlist-over.svg") no-repeat center center #e8eaef
+  background: url("../img/btn-memberlist-over.svg") no-repeat center center
+    #e8eaef;
 }
 
 .chat-top__button-invite {
@@ -444,7 +481,7 @@ input, button, textarea {
   border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-weight: 400;
   font-size: 12px;
   color: #8f9fae;
@@ -463,10 +500,10 @@ input, button, textarea {
 
 .chat-empty {
   width: 100%;
-  height: calc(100% - 72px);
-  background: #f7f8fc;
+  height: 100%;
+  background: #fff;
   padding: 190px 0;
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-weight: 400;
   text-align: center;
   color: #abb8c4;
@@ -492,14 +529,13 @@ input, button, textarea {
 .chat {
   display: none;
   width: 100%;
-  height: calc(100% - 72px);
+  height: 100%;
 }
 
 .chat-canvas {
   width: 100%;
-  height: calc(100% - 71px);
-  background: #f7f8fc;
-  border-bottom: 1px solid rgba(171, 184, 196, 0.5);
+  height: calc(100% - 90px);
+  background: #fff;
   overflow-y: auto;
   padding: 28px 0 0 0;
 }
@@ -508,7 +544,7 @@ input, button, textarea {
   width: 100%;
   min-height: 24px;
   background: transparent;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 16px;
   color: #60768b;
@@ -519,10 +555,10 @@ input, button, textarea {
 }
 
 /*label.chat-canvas__list-name:hover {*/
-  /*cursor: pointer;*/
+/*cursor: pointer;*/
 /*}*/
 /*label.chat-canvas__list-text:hover {*/
-  /*cursor: pointer;*/
+/*cursor: pointer;*/
 /*}*/
 
 .chat-canvas__list-notice {
@@ -530,7 +566,7 @@ input, button, textarea {
   height: 32px;
   min-height: 24px;
   background: transparent;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 16px;
   color: #60768b;
@@ -603,7 +639,7 @@ input, button, textarea {
   -moz-border-radius: 2px;
   border-radius: 2px;
   background: #e2eff7;
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-weight: 400;
   font-size: 12px;
   color: #2a78c2;
@@ -628,8 +664,8 @@ a.hover:hover {
 
 .chat-input {
   width: 100%;
-  height: 51px;
-  padding: 8px 20px 4px 20px;
+  height: 90px;
+  padding: 20px 40px;
   background: #fff;
 }
 
@@ -639,7 +675,6 @@ a.hover:hover {
   float: left;
   padding: 10px;
   margin-bottom: 3px;
-  border: 1px solid #abb8c4;
   -webkit-border-top-left-radius: 2px;
   border-top-left-radius: 2px;
   -webkit-border-bottom-left-radius: 2px;
@@ -652,21 +687,46 @@ a.hover:hover {
 }
 
 .file-upload {
-  background: url("../img/loading-rectagular.gif") no-repeat center center #f7f8fc;
+  background: url("../img/loading-rectagular.gif") no-repeat center center
+    #f7f8fc;
 }
 label.chat-input-file.file-upload {
-  background: url("../img/loading-rectagular.gif") no-repeat center center #f7f8fc;
+  background: url("../img/loading-rectagular.gif") no-repeat center center
+    #f7f8fc;
 }
 
 .chat-input-text {
   width: calc(100% - 40px);
-  height: 40px;
+  height: 50px;
   float: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.chat-input-text__submit {
+  border-radius: 10px;
+  background: #27e099;
+  border-radius: 10px;
+  border: none;
+  padding: 0 40px;
+  height: 50px;
+  transition: 0.2s ease-in-out;
+  margin-left: 20px;
+}
+
+.chat-input-text__submit:hover {
+  background: #1ec384;
+}
+
+.chat-input-text__submit span {
+  font: normal bold 14px / 18px "Lato";
+  color: #ffffff;
 }
 
 .chat-input-typing {
   display: none;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-style: italic;
   font-size: 11px;
@@ -675,37 +735,39 @@ label.chat-input-file.file-upload {
   padding: 0 20px;
 }
 
-::-webkit-input-placeholder { /* WebKit browsers */
-  font-weight: 300;
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font: normal normal 14px / 21px "Lato";
+  color: #9fa8c4;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  font-weight: 300;
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font: normal normal 14px / 21px "Lato";
+  color: #9fa8c4;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-  font-weight: 300;
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font: normal normal 14px / 21px "Lato";
+  color: #9fa8c4;
 }
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-  font-weight: 300;
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  font: normal normal 14px / 21px "Lato";
+  color: #9fa8c4;
 }
 .chat-input-text__field {
   width: 100%;
-  height: 40px;
-  min-height: 40px;
-  max-height: 40px;
-  font-family: 'Lato';
-  font-weight: 400;
-  font-size: 14px;
+  height: 50px;
+  border-radius: 10px;
+  min-height: 50px;
+  max-height: 50px;
+  font: normal normal 14px / 1.4 "Lato";
   color: #8f9fae;
   overflow-y: auto;
   resize: none;
-  padding: 10px 20px 0 20px;
-  border: 1px solid #abb8c4;
-  border-left: 0;
-  -webkit-border-top-right-radius: 2px;
-  border-top-right-radius: 2px;
-  -webkit-border-bottom-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  background: #f7f8fc;
+  padding: 13px 20px 0 20px;
+  border: 1px solid #d9d8ff;
+  background: #fff;
 }
 
 .chat-input-text__field:focus {
@@ -727,14 +789,14 @@ label.chat-input-file.file-upload {
 }
 
 .modal-guide-create__title {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 500;
   font-size: 16px;
   color: #32c5e6;
 }
 
 .modal-guide-create__desc {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 14px;
   color: #fff;
@@ -749,7 +811,7 @@ label.chat-input-file.file-upload {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-weight: 400;
   font-size: 14px;
   color: #fff;
@@ -769,7 +831,7 @@ label.chat-input-file.file-upload {
   right: 16px;
   border: 0;
   background: url("../img/img-leave.svg") no-repeat center center transparent;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 500;
   font-size: 14px;
   color: #fff;
@@ -790,7 +852,7 @@ label.chat-input-file.file-upload {
   right: 18px;
   border: 0;
   background: url("../img/img-current.svg") no-repeat center center transparent;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 500;
   font-size: 12px;
   color: #fff;
@@ -814,7 +876,7 @@ label.chat-input-file.file-upload {
   right: 42px;
   border: 0;
   background: url("../img/img-member.svg") no-repeat center center transparent;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 500;
   font-size: 14px;
   color: #fff;
@@ -851,7 +913,7 @@ label.chat-input-file.file-upload {
   height: 32px;
   padding: 0 34px 0 12px;
   background: url("../img/icon-search.svg") no-repeat 220px center #fff;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 14px;
   color: #abb8c4;
@@ -882,7 +944,7 @@ label.chat-input-file.file-upload {
   width: 100%;
   height: 36px;
   background: 20px center transparent;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 16px;
   color: #60768b;
@@ -908,7 +970,7 @@ label.chat-input-file.file-upload {
   width: 100%;
   height: 72px;
   border-top: 1px solid rgba(171, 184, 196, 0.5);
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 14px;
   color: #60678b;
@@ -927,8 +989,12 @@ label.chat-input-file.file-upload {
 .modal-open-chat-more:focus {
   color: #32c5e6;
 }
-.modal-open-chat-more:hover > .modal-open-chat-more__text > .modal-open-chat-more__icon,
-.modal-open-chat-more:focus > .modal-open-chat-more__text > .modal-open-chat-more__icon {
+.modal-open-chat-more:hover
+  > .modal-open-chat-more__text
+  > .modal-open-chat-more__icon,
+.modal-open-chat-more:focus
+  > .modal-open-chat-more__text
+  > .modal-open-chat-more__icon {
   background: url("../img/btn-more-over.svg") no-repeat center center;
 }
 
@@ -936,7 +1002,7 @@ label.chat-input-file.file-upload {
   width: 270px;
   height: 46px;
   margin: auto;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 14px;
   color: #60678b;
@@ -966,7 +1032,7 @@ label.chat-input-file.file-upload {
   width: 100%;
   min-height: 48px;
   padding: 16px 20px 0 20px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 500;
   border-bottom: 1px solid rgba(171, 184, 196, 0.5);
 }
@@ -981,7 +1047,7 @@ label.chat-input-file.file-upload {
   color: #abb8c4;
 }
 
-.modal-messaging-top__btn{
+.modal-messaging-top__btn {
   position: absolute;
   right: 10px;
 
@@ -994,17 +1060,12 @@ label.chat-input-file.file-upload {
   height: 26px;
 }
 
-.modal-messaging-list {
-  width: 100%;
-  height: calc(100% - 164px);
-  overflow-y: auto;
-}
 .modal-messaging-list__item {
   width: 100%;
   height: 36px;
   padding: 0 20px 0 50px;
   background: url("../img/icon-userlist.svg") no-repeat 20px center #fff;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 16px;
   color: #60768b;
@@ -1034,7 +1095,7 @@ label.chat-input-file.file-upload {
 .modal-messaging-more {
   width: 100%;
   height: 46px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
   font-size: 14px;
   color: #60678b;
@@ -1071,7 +1132,7 @@ label.chat-input-file.file-upload {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-weight: 400;
   font-size: 16px;
   color: #ffffff;
@@ -1083,7 +1144,10 @@ label.chat-input-file.file-upload {
   background: #328fe6;
 }
 
-.modal-leave-channel, .modal-hide-channel, .modal-confirm, .modal-input {
+.modal-leave-channel,
+.modal-hide-channel,
+.modal-confirm,
+.modal-input {
   display: none;
   position: fixed;
   top: 0;
@@ -1095,12 +1159,15 @@ label.chat-input-file.file-upload {
   background: rgba(0, 0, 0, 0.5);
   opacity: 1;
   z-index: 3;
-  -webkit-transition: opacity .15s linear;
-  -o-transition: opacity .15s linear;
-  transition: opacity .15s linear;
+  -webkit-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
 }
 
-.modal-leave-channel-card, .modal-hide-channel-card, .modal-confirm-card, .modal-input-card {
+.modal-leave-channel-card,
+.modal-hide-channel-card,
+.modal-confirm-card,
+.modal-input-card {
   width: 386px;
   height: auto;
   margin: 200px auto;
@@ -1112,8 +1179,11 @@ label.chat-input-file.file-upload {
   border-radius: 4px;
 }
 
-.modal-leave-channel-title, .modal-hide-channel-title, .modal-confirm-title, .modal-input-title {
-  font-family: 'Lato';
+.modal-leave-channel-title,
+.modal-hide-channel-title,
+.modal-confirm-title,
+.modal-input-title {
+  font-family: "Lato";
   font-weight: 600;
   font-size: 18px;
   color: #333e4a;
@@ -1121,8 +1191,11 @@ label.chat-input-file.file-upload {
   padding: 0 20px;
 }
 
-.modal-leave-channel-desc, .modal-hide-channel-desc, .modal-confirm-desc, .modal-input-desc {
-  font-family: 'Lato';
+.modal-leave-channel-desc,
+.modal-hide-channel-desc,
+.modal-confirm-desc,
+.modal-input-desc {
+  font-family: "Lato";
   font-weight: 400;
   font-size: 14px;
   color: #60768b;
@@ -1130,21 +1203,30 @@ label.chat-input-file.file-upload {
   padding: 0 20px;
 }
 
-.modal-leave-channel-separator, .modal-hide-channel-seprator, .modal-confirm-seprator, .modal-input-separator {
+.modal-leave-channel-separator,
+.modal-hide-channel-seprator,
+.modal-confirm-seprator,
+.modal-input-separator {
   padding-top: 14px;
   border-bottom: 1px solid rgba(171, 184, 196, 0.5);
 }
 
-.modal-leave-channel-bottom, .modal-hide-channel-bottom, .modal-confirm-bottom, .modal-input-bottom {
+.modal-leave-channel-bottom,
+.modal-hide-channel-bottom,
+.modal-confirm-bottom,
+.modal-input-bottom {
   padding: 10px 20px;
   text-align: right;
 }
 
-.modal-leave-channel-button, .modal-hide-channel-button, .modal-confirm-button, .modal-input-button {
+.modal-leave-channel-button,
+.modal-hide-channel-button,
+.modal-confirm-button,
+.modal-input-button {
   width: 68px;
   height: 28px;
   text-align: center;
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-weight: 400;
   font-size: 12px;
   border: 1px solid;
@@ -1153,25 +1235,43 @@ label.chat-input-file.file-upload {
   border-radius: 2px;
 }
 
-.modal-leave-channel-close, .modal-hide-channel-close, .modal-confirm-close, .modal-input-close {
+.modal-leave-channel-close,
+.modal-hide-channel-close,
+.modal-confirm-close,
+.modal-input-close {
   color: #60678b;
   border: 1px solid #abb8c4;
   background: #fafcff;
 }
-.modal-leave-channel-close:hover, .modal-hide-channel-close:hover, .modal-confirm-close:hover, .modal-input-close:hover,
-.modal-leave-channel-close:focus, .modal-hide-channel-close:focus, .modal-confirm-close:focus, .modal-input-close:focus {
+.modal-leave-channel-close:hover,
+.modal-hide-channel-close:hover,
+.modal-confirm-close:hover,
+.modal-input-close:hover,
+.modal-leave-channel-close:focus,
+.modal-hide-channel-close:focus,
+.modal-confirm-close:focus,
+.modal-input-close:focus {
   color: #6742d6;
   border: 1px solid #6742d6;
 }
 
-.modal-leave-channel-submit, .modal-hide-channel-submit, .modal-confirm-submit, .modal-input-submit {
+.modal-leave-channel-submit,
+.modal-hide-channel-submit,
+.modal-confirm-submit,
+.modal-input-submit {
   width: 58px;
   color: #fff;
   border: 1px solid #0692b0;
   background: #32c5e6;
 }
-.modal-leave-channel-submit:hover, .modal-hide-channel-submit:hover, .modal-confirm-submit:hover, .modal-input-submit:hover,
-.modal-leave-channel-submit:focus, .modal-hide-channel-submit:focus, .modal-confirm-submit:focus, .modal-input-submit:focus {
+.modal-leave-channel-submit:hover,
+.modal-hide-channel-submit:hover,
+.modal-confirm-submit:hover,
+.modal-input-submit:hover,
+.modal-leave-channel-submit:focus,
+.modal-hide-channel-submit:focus,
+.modal-confirm-submit:focus,
+.modal-input-submit:focus {
   border: 1px solid #1a64ab;
   background: #328fe6;
 }
@@ -1183,7 +1283,7 @@ label.chat-input-file.file-upload {
 
 .modal-input-box-elem {
   width: 100%;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   border-radius: 3px;
   border: 1px solid #dedede;
   height: 30px;
@@ -1203,15 +1303,15 @@ label.chat-input-file.file-upload {
   border-radius: 3px;
   border: 1px solid #abb8c4;
   z-index: 2;
-  -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
-  -moz-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 .modal-member-title {
   width: 100%;
   height: 38px;
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-weight: 400;
   font-size: 12px;
   color: #60768b;
@@ -1224,7 +1324,7 @@ label.chat-input-file.file-upload {
 .modal-member-list {
   width: 100%;
   height: 340px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 500;
   font-size: 14px;
   color: #60768b;
@@ -1261,6 +1361,11 @@ label.chat-input-file.file-upload {
   color: #cdcdcd;
 }
 
+.left-nav-channel-lastmessage {
+  font: normal normal 14px / 21px "Lato";
+  color: #9fa8c4;
+}
+
 .modal-invite {
   display: none;
   width: 386px;
@@ -1274,15 +1379,15 @@ label.chat-input-file.file-upload {
   border-radius: 3px;
   border: 1px solid #abb8c4;
   z-index: 2;
-  -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
-  -moz-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 .modal-invite-title {
   width: 100%;
   height: 38px;
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-weight: 400;
   font-size: 12px;
   color: #60768b;
@@ -1295,7 +1400,7 @@ label.chat-input-file.file-upload {
   width: 100%;
   height: 80px;
   padding: 16px 20px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 500;
 }
 .modal-invite-top__title {
@@ -1313,7 +1418,7 @@ label.chat-input-file.file-upload {
 .modal-invite-list {
   width: 100%;
   height: 234px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 500;
   font-size: 14px;
   color: #60768b;
@@ -1337,7 +1442,7 @@ label.chat-input-file.file-upload {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-weight: 400;
   font-size: 12px;
   color: #ffffff;
