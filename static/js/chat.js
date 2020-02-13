@@ -73,21 +73,6 @@ $(document).on('click', '.chat-canvas__list-name', function (e) {
 });
 
 
-$(document).on('click', '.chat-canvas__list-text', function (e) {
-  var userId = $(this).prev().prev().data('userid');
-  var messageId = $(this).data('messageid');
-  var channelUrl = currChannelInfo.url;
-  var messageObject = $(this);
-
-  modalConfirm('Are you Sure?', 'Do you want to delete message?', function () {
-    currChannelInfo.deleteMessage(channelMessageList[channelUrl][messageId]['message'], function (response, error) {
-      if (!error) {
-        delete(channelMessageList[channelUrl][messageId]);
-        messageObject.parent().remove();
-      }
-    });
-  });
-});
 
 
 function modalConfirm(title, desc, submit, close) {
@@ -759,17 +744,28 @@ function groupChannelListMembersAndProfileImageUpdate(targetChannel) {
   // console.log(selectedProfileImageUrl);
 
   var targetElem = $('.left-nav-channel-group[data-channel-url=' + targetChannel.url + ']');
-  // $('.left-nav-channel-group[data-channel-url='+targetChannel.url+']')
+  $('.left-nav-channel-group[data-channel-url='+targetChannel.url+']')
 
+	
+	
+	var imgTag = '<div class="left-nav-channel-avatar"><img src='+ selectedProfileImageUrl +' /></div>';
+
+  targetElem.prepend(imgTag);
   // targetElem.css('background-image', 'url(' + selectedProfileImageUrl + ')');
 
   // member nickname update
-  targetElem.find('.left-nav-channel-members').html(membersNickname);
+  targetElem.find('.left-nav-channel-members').html(membersNickname.split(',')[0]);
 
 }
 
 function joinGroupChannel(channelUrl, callback) {
-  // console.log('joinGroupChannel:', channelUrl);
+
+	if ( $('.chat-body').hasClass('left') ) {
+		$('.chat-body.left').removeClass('left');
+		$('.chat-body').addClass('right');
+	}
+
+
 
   if (channelUrl == currChannelUrl) {
     navInit();
@@ -1254,7 +1250,15 @@ var showTypingUser = function (channel) {
 /***********************************************
  *              Common Function
  **********************************************/
-function initChatTitle(title, index) {
+function initChatTitle(title, index, btn) {
+
+	var userIcon = '<svg class="icon-btn-user" viewBox="0 0 14 18">' +
+	'<path d="M12.7082 5.87835C12.7082 9.12487 10.146 11.7567 6.98526 11.7567C3.82454 11.7567 1.26228 9.12487 1.26228 5.87835C1.26228 2.63183 3.82454 0 6.98526 0C10.146 0 12.7082 2.63183 12.7082 5.87835ZM2.73899 5.87835C2.73899 8.28716 4.64011 10.2399 6.98526 10.2399C9.33041 10.2399 11.2315 8.28716 11.2315 5.87835C11.2315 3.46953 9.33041 1.5168 6.98526 1.5168C4.64011 1.5168 2.73899 3.46953 2.73899 5.87835Z"/>' +
+	'<path d="M13.7069 17.8062C14.0549 17.5108 14.1062 16.9786 13.7898 16.6478C13.0025 15.8245 12.0782 15.149 11.0584 14.6543C9.79171 14.0399 8.40881 13.7196 7.00799 13.7162C5.60717 13.7127 4.22281 14.0263 2.95329 14.6345C1.93123 15.1242 1.0038 15.7952 0.212678 16.6146C-0.105223 16.9438 -0.0564123 17.4762 0.290178 17.7734C0.636768 18.0705 1.14952 18.0192 1.47305 17.6957C2.10636 17.0627 2.84 16.5417 3.64438 16.1564C4.6963 15.6524 5.84338 15.3926 7.0041 15.3954C8.16482 15.3983 9.31068 15.6637 10.3602 16.1728C11.1628 16.5621 11.894 17.0866 12.5244 17.7228C12.8464 18.0478 13.3589 18.1017 13.7069 17.8062Z"/>' +
+	'</svg>';
+	var backIcon = 	'<svg viewBox="0 0 15 15" class="button-arrow-back"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.02058 0.707107C7.63006 0.316582 6.99689 0.316583 6.60637 0.707107L0.706874 6.6066C0.316349 6.99713 0.31635 7.63029 0.706874 8.02082L6.60637 13.9203C6.99689 14.3108 7.63006 14.3108 8.02058 13.9203C8.41111 13.5298 8.41111 12.8966 8.02058 12.5061L2.82819 7.31371L8.02058 2.12132C8.41111 1.7308 8.41111 1.09763 8.02058 0.707107Z"/></svg>';
+
+	title = '<div class="chat-top__name">' + backIcon +' <span>' + title + '</span></div><a href="#" class="view-button">' + userIcon + '<span>View profile</span></a><a class="profile_btn s"><span></span></a>';
   $('.chat-top__title').html(title);
   $('.chat-top__title').show();
   $('.chat-top-button').show();
@@ -1352,14 +1356,11 @@ function messageList(message) {
     console.log(message);
   } else {
     if (isCurrentUser(user.userId)) {
+			
       var readReceiptHtml = '  <label class="chat-canvas__list-readreceipt"></label>';
 
       var msg = '' +
-        '<div class="chat-canvas__list">' +
-        '  <label class="chat-canvas__list-name chat-canvas__list-name__user" data-userid="%userid%">' +
-        xssEscape(user.nickname) +
-        '  </label>' +
-        '  <label class="chat-canvas__list-separator">:</label>' +
+        '<div class="chat-canvas__list current-user">' +
         '  <label class="chat-canvas__list-text" data-messageid="%messageid%">%message%</label>' +
         readReceiptHtml +
         '</div>';
@@ -1370,10 +1371,9 @@ function messageList(message) {
     } else {
       var msg = '' +
         '<div class="chat-canvas__list">' +
-        '  <label class="chat-canvas__list-name" data-userid="%userid%" data-nickname="%nickname%">' +
-        xssEscape(user.nickname) +
-        '  </label>' +
-        '  <label class="chat-canvas__list-separator">:</label>' +
+				'  <div class="chat-canvas__list-avatar" data-userid="%userid%" data-nickname="%nickname%">' +
+				' <img src="' + xssEscape(user.profileUrl) + '" />' +
+        '  </div>' +
         '  <label class="chat-canvas__list-text" data-messageid="%messageid%">' +
         convertLinkMessage(xssEscape(message.message)) +
         '  </label>' +
@@ -1386,6 +1386,16 @@ function messageList(message) {
 }
 
 function updateChannelMessageCache(channel, message) {
+	
+	var avatarUrl = '';
+
+	Object.keys(channel.memberMap).map(function(elem){
+		if (isCurrentUser(elem)) {
+			avatarUrl = channel.memberMap[elem].profileUrl;
+		}
+	})
+
+	
   var readReceipt = -1;
   if (channel.isGroupChannel()) {
     readReceipt = channel.getReadReceipt(message);
@@ -1404,10 +1414,12 @@ function updateChannelMessageCache(channel, message) {
     channelMessageList[channel.url][message.messageId]['readReceipt'] = readReceipt;
 
     var elemString = '.chat-canvas__list-text[data-messageid=' + message.messageId + ']';
-    var elem = $(elemString).next();
+		var elem = $(elemString).next();
+		
     if (readReceipt == 0) {
-      elem.html('').hide();
-    } else {
+      elem.html('<img src="'+ avatarUrl +'" />').show();
+		} else
+		 {
       elem.html(readReceipt);
       if (!elem.is(':visible')) {
         elem.show();
@@ -1429,6 +1441,7 @@ function fileMessageList(message) {
   var msgList = '';
   var user = message.sender;
   if (isCurrentUser(user.userId)) {
+		
     msgList += '' +
       '<div class="chat-canvas__list">' +
       '  <label class="chat-canvas__list-name chat-canvas__list-name__user">' +
@@ -1509,7 +1522,9 @@ function setWelcomeMessage(name) {
 
 $('.chat-input-text__field').keydown(function (event) {
   if (event.keyCode == 13 && !event.shiftKey) {
-    event.preventDefault();
+		event.preventDefault();
+		console.log(this.value);
+		
     if (!$.trim(this.value).isEmpty()) {
       event.preventDefault();
       this.value = $.trim(this.value);
@@ -1527,6 +1542,36 @@ $('.chat-input-text__field').keydown(function (event) {
     }
   }
 });
+
+
+
+$(document).on('click', '.chat-top__name', function (e) {
+	if ( $('.chat-body').hasClass('right') ) {
+		$('.chat-body.right').removeClass('right');
+		$('.chat-body').addClass('left');
+	}
+});
+
+
+
+$('.chat-input-text__submit').click(function (event) {
+	event.preventDefault();
+	var messageElement = $(this).prev('.chat-input-text__field');
+	console.log(messageElement.val());
+	
+    if (!$.trim(messageElement.val()).isEmpty()) {
+      event.preventDefault();
+      messageElement.val( $.trim(messageElement.val()) )
+
+      currChannelInfo.sendUserMessage($.trim(messageElement.val()), '', SendMessageHandler);
+
+      scrollPositionBottom();
+    }
+    messageElement.val('');
+});
+
+
+
 
 $('#chat_file_input').change(function () {
   if ($('#chat_file_input').val().trim().length == 0) return;
@@ -1677,15 +1722,23 @@ $(document).ready(function () {
   notifyMe();
 	init();
 
-	
-	userListToken = '';
-	userListNext = 0;
-	setTimeout(() => {
-		getUserList(true);
-	}, 2000);
-	
+	/* Optimize Resize */
+	var	didResize = false;
+	$(window).resize(function() {
+		didResize = true;
+	});
+	setInterval(function() {
+		if (didResize) {
+			hasResized(); 
+			didResize = false;
+		}
+	}, 200);
+
+	manageChatLayout(window.innerWidth);
 
 });
+
+
 
 window.onfocus = function () {
   if (currChannelInfo && !currChannelInfo.isOpenChannel()) {
@@ -1697,3 +1750,27 @@ window.onfocus = function () {
     }
   });
 };
+
+
+
+
+
+
+function hasResized() { 
+	manageChatLayout(window.innerWidth);
+}
+
+function manageChatLayout(currentResolution) {
+	if( currentResolution >= 767) {
+			$('.chat-body').hasClass('left') ? $('.chat-body').removeClass('left') : '' ;
+			$('.chat-body').hasClass('right') ? $('.chat-body').removeClass('right') : '' ;
+	}
+	else {
+		if ( $('.chat-body').hasClass('left') ) return;
+		if ( $('.chat-body').hasClass('right') ) return;
+		if ( $('.chat-empty').is(':visible') )
+			$('.chat-body').addClass('left');
+		else
+			$('.chat-body').addClass('right');
+	}
+}

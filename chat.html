@@ -22,7 +22,6 @@
   <![endif]-->
 
     <script src="static/js/jquery-1.11.3.min.js"></script>
-    <link rel="shortcut icon" href="https://s3.amazonaws.com/sendbird-static/favicon/favicon.ico" type="image/x-icon">
 
     <link href='https://fonts.googleapis.com/css?family=Exo+2:400,900italic,900,800italic,800,700italic,700,600italic,600,500italic,500,400italic,300italic,200italic,200,100italic,100,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,900italic,900,800italic,800,700italic,700,600italic,600,500italic,500,400italic,300italic,200italic,200,100italic,100,300' rel='stylesheet' type='text/css'>
@@ -30,7 +29,7 @@
     <link rel="stylesheet" href="static/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/sample-chat.css">
 
-    <title>Web SDK Sample</title>
+    <title>Matches</title>
 
 </head>
 
@@ -38,13 +37,13 @@
     <div class="init-check"></div>
 
     <div class="chat-container">
-        <div class="sample-body">
+        <div class="chat-body">
 
 
             <!-- top -->
             <div class="chat-top">
 								<h1>Matches</h1>
-                <div class="chat-top__title"></div>
+								<div class="chat-top__title"></div>
             </div>
 
             <!-- left nav -->
@@ -80,10 +79,10 @@
 
                 <!-- channel empty -->
                 <div class="chat-empty">
-                    <div class="chat-empty chat-empty__tile">WELCOME TO SAMPLE CHAT</div>
+                    <div class="chat-empty chat-empty__tile">WELCOME TO MYIRISHDATE CHAT</div>
                     <div class="chat-empty chat-empty__icon"></div>
                     <div class="chat-empty chat-empty__desc">
-                        Create or select a channel to chat in.<br> If you don't have a channel to participate,<br> go ahead and create your first channel now.
+                        Enjoy :)
                     </div>
                 </div>
 
@@ -95,7 +94,10 @@
                         <div id="container">
                         </div>
                         <label class="chat-input-file" for="chat_file_input">
-            <input type="file" name="file" id="chat_file_input" style="display: none;">
+						<input type="file" name="file" id="chat_file_input" style="display: none;">
+						<svg class="btn-attach" viewBox="0 0 24 22">
+							<path d="M2.37273 19.6481C-0.790911 16.5122 -0.790911 11.4111 2.37273 8.27518L10.4043 0.314137C10.8272 -0.105129 11.5118 -0.104296 11.934 0.314137C12.3563 0.732708 12.3571 1.41131 11.9341 1.83057L3.9026 9.79161C1.58336 12.0905 1.58266 15.8321 3.9026 18.1317C6.22253 20.4312 9.99725 20.4305 12.3165 18.1317L20.7305 9.79147C22.2067 8.32821 22.2067 5.94756 20.7305 4.4843C19.2541 3.0209 16.8524 3.0209 15.3762 4.48416L7.72704 12.0662C7.09453 12.6931 7.09439 13.7137 7.72704 14.3408C8.35968 14.9679 9.38925 14.9677 10.0218 14.3408L17.2884 7.13789C17.7114 6.71862 18.396 6.71945 18.8181 7.13789C19.2404 7.55646 19.2413 8.23505 18.8183 8.65432L11.5516 15.8572C10.0754 17.3205 7.67353 17.3203 6.19732 15.8571C4.7211 14.3938 4.72096 12.013 6.19718 10.5498L13.8463 2.96772C16.1654 0.668985 19.9403 0.668152 22.2604 2.96786C24.5803 5.26743 24.5795 9.00917 22.2604 11.3079L13.8463 19.6481C10.6827 22.784 5.53638 22.784 2.37273 19.6481Z"/>
+							</svg>
           </label>
                         <!--[if gt IE 7]>
           <script>
@@ -104,10 +106,14 @@
           <a class="chat-input-file" id="chat_file_input2" href="javascript:;">
           </a>
           <![endif]-->
-                        <div class="chat-input-text">
+                        <form class="chat-input-text">
 														<textarea class="chat-input-text__field" placeholder="Write a chat" disabled="true" autofocus></textarea>
-														<button class="chat-input-text__submit" type="submit"><span>Send</span></button>
-                        </div>
+														<button class="chat-input-text__submit" type="submit">
+															<svg class="icon-btn-send" viewBox="0 0 22 22">
+																<path d="M21.8878 0.900949C21.7898 0.815054 21.6505 0.795125 21.5323 0.849912L0.190048 10.7662C0.0751477 10.8196 0.00115667 10.9342 -0.000224499 11.0609C-0.00160566 11.1875 0.0699519 11.3038 0.183734 11.3596L6.22357 14.3237C6.33433 14.3781 6.46639 14.3658 6.56531 14.2919L12.4377 9.90279L7.82763 14.6448C7.76186 14.7125 7.72832 14.8051 7.73555 14.8992L8.19456 20.8769C8.20475 21.0094 8.29354 21.1227 8.41976 21.1642C8.4535 21.1752 8.48816 21.1806 8.52242 21.1806C8.61641 21.1806 8.70783 21.1403 8.77143 21.0666L11.9772 17.3518L15.9401 19.2453C16.0262 19.2864 16.1257 19.2881 16.2132 19.2501C16.3006 19.212 16.3671 19.138 16.3957 19.0471L21.9846 1.2467C22.0237 1.1224 21.9856 0.986844 21.8878 0.900949Z" fill="white"/>
+																</svg>
+															<span>Send</span></button>
+                        </form>
                     </div>
                     <label class="chat-input-typing"></label>
                 </div>
