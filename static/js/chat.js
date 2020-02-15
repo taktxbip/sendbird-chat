@@ -13,6 +13,7 @@ var hideChannelUrl = '';
 var userListToken = '';
 var userListNext = 0;
 var targetAddGroupChannel = null;
+var currentDate = '';
 
 var isOpenChat = false;
 var memberList = [];
@@ -1337,8 +1338,10 @@ function loadMoreChatMessage(func) {
     $('.chat-canvas')[0].scrollTop = (moreMessage.length * MESSAGE_TEXT_HEIGHT);
 
     for (var i in messages) {
-      var message = messages[i];
-      updateChannelMessageCache(currChannelInfo, message);
+			var message = messages[i];
+			// console.log(message);
+			
+			updateChannelMessageCache(currChannelInfo, message);			
     }
 
     if (func) {
@@ -1352,14 +1355,33 @@ function messageList(message) {
   var user = message.sender;
   var channel = currChannelInfo;
 
+	var dateString = chatDateFormat(message.createdAt);
+	var tmpDate = 0;
+
+	if ( currentDate == '' ) {
+		tmpDate = dateString;
+	}
+	else {
+		if ( currentDate != dateString ) {
+			tmpDate = dateString;
+		}
+		else {
+			tmpDate = '';
+		}
+	}
+	
+
+
   if (message.isAdminMessage()) {
     console.log(message);
   } else {
     if (isCurrentUser(user.userId)) {
 			
-      var readReceiptHtml = '  <label class="chat-canvas__list-readreceipt"></label>';
+			var readReceiptHtml = '  <label class="chat-canvas__list-readreceipt"></label>';
+			
+			tmpDate = tmpDate ? '<span class="chat-canvas__date">'+ tmpDate +'</span>' : '';
 
-      var msg = '' +
+      var msg = tmpDate + '' +
         '<div class="chat-canvas__list current-user">' +
         '  <label class="chat-canvas__list-text" data-messageid="%messageid%">%message%</label>' +
         readReceiptHtml +
@@ -1381,9 +1403,11 @@ function messageList(message) {
       msgList += msg.replace('%userid%', user.userId).replace('%nickname%', xssEscape(user.nickname)).replace('%messageid%', message.messageId);
     }
   }
-
+	currentDate = dateString;
   return msgList;
 }
+
+
 
 function updateChannelMessageCache(channel, message) {
 	
@@ -1395,7 +1419,6 @@ function updateChannelMessageCache(channel, message) {
 		}
 	})
 
-	
   var readReceipt = -1;
   if (channel.isGroupChannel()) {
     readReceipt = channel.getReadReceipt(message);
@@ -1411,20 +1434,25 @@ function updateChannelMessageCache(channel, message) {
   channelMessageList[channel.url][message.messageId]['message'] = message;
 
   if (channel.isGroupChannel() && readReceipt >= 0) {
+
+
+		// console.log(readReceipt);
+		
     channelMessageList[channel.url][message.messageId]['readReceipt'] = readReceipt;
 
     var elemString = '.chat-canvas__list-text[data-messageid=' + message.messageId + ']';
 		var elem = $(elemString).next();
 		
     if (readReceipt == 0) {
-      elem.html('<img src="'+ avatarUrl +'" />').show();
+      elem.html('<img class="read-status" src="'+ avatarUrl +'" />').show();
 		} else
 		 {
       elem.html(readReceipt);
       if (!elem.is(':visible')) {
         elem.show();
       }
-    }
+		}
+		setOnlyLastMessageVisible();
   } else {
     return;
   }
@@ -1772,5 +1800,13 @@ function manageChatLayout(currentResolution) {
 			$('.chat-body').addClass('left');
 		else
 			$('.chat-body').addClass('right');
+	}
+}
+
+function setOnlyLastMessageVisible() {
+	var lengthStatus = $('.read-status').length;
+	if ( lengthStatus ) {
+		$('.read-status').closest('.chat-canvas__list-readreceipt').css('display', 'none');
+		$('.read-status').eq(lengthStatus-1).closest('.chat-canvas__list-readreceipt').css('display', 'inline-block').show();
 	}
 }
